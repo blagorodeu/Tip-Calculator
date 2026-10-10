@@ -110,6 +110,7 @@ fun UI_Work(modifier: Modifier = Modifier) {
                 }
             }
         }
+        Text("Итоговая сумма: " + 1200, fontSize = 20.sp, modifier = Modifier.padding(15.dp))
     }
 }
 
