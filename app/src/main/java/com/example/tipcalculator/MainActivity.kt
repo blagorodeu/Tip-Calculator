@@ -55,6 +55,7 @@ fun UI_Work(modifier: Modifier = Modifier) {
     var sliderPosition by remember { mutableFloatStateOf(0f) }
     val sale_percent = listOf("3%", "5%", "7%", "10%")
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(sale_percent[0]) }
+    val res = remember{mutableStateOf("")}
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,7 +111,7 @@ fun UI_Work(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Text("Итоговая сумма: " + 1200, fontSize = 20.sp, modifier = Modifier.padding(15.dp))
+        Text("Итоговая сумма: " + res.value, fontSize = 20.sp, modifier = Modifier.padding(15.dp))
     }
 }
 
