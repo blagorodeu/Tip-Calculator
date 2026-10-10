@@ -20,10 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TipCalculatorTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    UI_Work(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +28,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun UI_Work(modifier: Modifier = Modifier) {
+
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun TipsPreview() {
     TipCalculatorTheme {
-        Greeting("Android")
+        UI_Work()
     }
 }
