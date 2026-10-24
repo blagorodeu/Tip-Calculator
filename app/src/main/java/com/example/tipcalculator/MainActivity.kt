@@ -114,9 +114,10 @@ fun UI_Work(modifier: Modifier = Modifier) {
         if ((input_sum.value.toDoubleOrNull() != null)&&(input_eat_count.value.toIntOrNull() != null)&&
             input_eat_count.value.toInt()>=1)
         {
-            var sum: Double = input_sum.value.toDouble()
-            var eat_count: Int = input_eat_count.value.toInt()
+            val sum: Double = input_sum.value.toDouble()
+            val eat_count: Int = input_eat_count.value.toInt()
             var res_price = 0.0
+            var res_tip = 0.0
             var sale_value = 0.0
             if (selectedOption=="3%")
                 sale_value=0.03
@@ -141,7 +142,8 @@ fun UI_Work(modifier: Modifier = Modifier) {
             else
                 onOptionSelected(sale_percent[3]) //Выбирается скидка 10%
             res_price = (sum-sum*sale_value)*eat_count // Скидка рассчитывается для каждого блюда
-            res_total.value = "%.2f".format(res_price)
+            res_tip = res_price+res_price*(sliderPosition.toInt().toDouble()/100) // Чаевые рассчитываются по общей сумме
+            res_total.value = "%.2f".format(res_tip)
         }
         else{
             res_total.value="0,00"
