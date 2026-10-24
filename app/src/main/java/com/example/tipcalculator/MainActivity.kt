@@ -117,7 +117,30 @@ fun UI_Work(modifier: Modifier = Modifier) {
             var sum: Double = input_sum.value.toDouble()
             var eat_count: Int = input_eat_count.value.toInt()
             var res_price = 0.0
-            res_price = sum*eat_count
+            var sale_value = 0.0
+            if (selectedOption=="3%")
+                sale_value=0.03
+            else if (selectedOption=="5%")
+                sale_value=0.05
+            else if (selectedOption=="7%")
+                sale_value=0.07
+            else
+                sale_value=0.1
+            if ((eat_count>=1) && (eat_count<=2))
+            {
+                onOptionSelected(sale_percent[0]) //Выбирается скидка 3%
+            }
+            else if ((eat_count>=3) && (eat_count<=5))
+            {
+                onOptionSelected(sale_percent[1]) //Выбирается скидка 5%
+            }
+            else if ((eat_count>=6) && (eat_count<=10))
+            {
+                onOptionSelected(sale_percent[2]) //Выбирается скидка 7%
+            }
+            else
+                onOptionSelected(sale_percent[3]) //Выбирается скидка 10%
+            res_price = (sum-sum*sale_value)*eat_count // Скидка рассчитывается для каждого блюда
             res_total.value = "%.2f".format(res_price)
         }
         else{
