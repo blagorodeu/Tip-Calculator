@@ -55,7 +55,7 @@ fun UI_Work(modifier: Modifier = Modifier) {
     var sliderPosition by remember { mutableFloatStateOf(0f) }
     val sale_percent = listOf("3%", "5%", "7%", "10%")
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(sale_percent[0]) }
-    val res = remember{mutableStateOf("")}
+    val res_total = remember{mutableStateOf("0,00")}
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -111,7 +111,19 @@ fun UI_Work(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Text("Итоговая сумма: " + res.value, fontSize = 20.sp, modifier = Modifier.padding(15.dp))
+        if ((input_sum.value.toDoubleOrNull() != null)&&(input_eat_count.value.toIntOrNull() != null)&&
+            input_eat_count.value.toInt()>=1)
+        {
+            var sum: Double = input_sum.value.toDouble()
+            var eat_count: Int = input_eat_count.value.toInt()
+            var res_price = 0.0
+            res_price = sum*eat_count
+            res_total.value = "%.2f".format(res_price)
+        }
+        else{
+            res_total.value="0,00"
+        }
+        Text("Итоговая сумма: " + res_total.value, fontSize = 20.sp, modifier = Modifier.padding(15.dp))
     }
 }
 
